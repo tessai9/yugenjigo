@@ -1,13 +1,8 @@
 <template>
   <div>
     <p>{{ message }}</p>
-    <!--
     <div class="text-center my-3">
       <b-button v-b-tooltip.hover title="Tooltip content">Hover Me</b-button>
-    </div>
-    -->
-    <div class="text-center">
-      <button class="btn btn-primary">テストボタン</button>
     </div>
   </div>
 </template>
