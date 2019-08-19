@@ -1,7 +1,9 @@
 <template>
   <b-container class="p-0" fluid>
     <b-navbar type="dark" variant="info">
-      <b-navbar-brand id="service_title" href="/">GO<ion-icon name="megaphone"></ion-icon></b-navbar-brand>
+      <b-navbar-brand id="service_title" href="/">
+        GO<ion-icon name="megaphone"></ion-icon>
+      </b-navbar-brand>
     </b-navbar>
   </b-container>
 </template>
@@ -21,6 +23,13 @@ b-container {
 
 #service_title {
   font-family: 'Sawarabi Mincho', sans-serif;
-  font-size: 30px;
+  font-size: 2em;
 }
+
+@media (max-width: 720px) {
+  #service_title {
+    font-size: 1.5em;
+  }
+}
+
 </style>
