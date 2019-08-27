@@ -7,7 +7,8 @@ class TwitterController < ApplicationController
       config.access_token        = Rails.application.credentials.twitter_access_token
       config.access_token_secret = Rails.application.credentials.twitter_access_token_secret
     end
-    render :json => JSON.generate(@client.search("#有言実GO -RT", lang: "ja").take(5).text)
+
+    render :json => JSON.generate(@client.search("#有言実GO -RT", lang: "ja", count: 8).to_h)
   end
 
 end
