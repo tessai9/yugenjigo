@@ -1,5 +1,5 @@
 <template>
-  <b-container class="p-0" fluid>
+  <b-container class="p-0 max-view-height" fluid>
     <Navbar></Navbar>
     <div class="text-center my-3">
       <h1 class="logo">
@@ -17,6 +17,9 @@
       </b-container>
     </div>
     <Tweets></Tweets>
+    <div id="footer" class="text-center">
+      Copyright 2019 Tetsunari Sumiyoshi
+    </div>
   </b-container>
 </template>
 
@@ -35,8 +38,18 @@ export default {
   margin: 1em;
 }
 
+#footer {
+  bottom: 0;
+  position: absolute;
+  width: 100vw;
+}
+
 .logo {
   font-size: 5em;
+}
+
+.max-view-height{
+  height: 100vh;
 }
 
 @media (max-width: 720px) {
