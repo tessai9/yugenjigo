@@ -1,9 +1,10 @@
 <template>
   <b-container id="other_declaration" class="p-0" fluid>
-    <h4>みんなの宣言</h4>
+    <h4>みんなが今日絶対やること</h4>
     <b-card-group v-if="!error_flg" class="tweet_group" deck>
       <b-card
         v-for="tweet in get_data"
+        v-bind:key="tweet.data"
         class="tweet my-1"
         border-variant="primary"
         :header="tweet.user.name"
@@ -14,6 +15,9 @@
       </b-card>
     </b-card-group>
     <p v-else>{{error_message}}</p>
+    <div  v-model="load_flg" v-if="!load_flg" class="text-center">
+      <b-spinner variant="success"></b-spinner>
+    </div>
   </b-container>
 </template>
 
@@ -26,12 +30,12 @@ export default {
     return {
       error_flg: false,
       error_message: "今日はゆっくり休もうぜ（エラーが起きました）",
-      get_data: [],
-      num_of_tweets: 0
+      load_flg: false,
+      get_data: []
     }
   },
-  created:
-    function() {
+  methods:{
+    getTweets: function() {
       const self = this
       axios.get('/twitter')
         .then(function(res){
@@ -40,7 +44,13 @@ export default {
           }
           self.get_data = res.data.statuses
           self.num_of_tweets = res.data.length
+          self.load_flg = true
         })
+    }
+  },
+  created:
+    function() {
+      setTimeout(this.getTweets, 1000)
     }
 }
 </script>
