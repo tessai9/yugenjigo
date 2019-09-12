@@ -5,18 +5,12 @@
       <h1 class="logo">
         有言実GO<ion-icon name="megaphone"></ion-icon>
       </h1>
-      <b-container>
-        <b-button
-          id="declare"
-          variant="primary"
-          href="https://twitter.com/intent/tweet?hashtags=有言実GO"
-          target="_blank"
-        >
-          宣言する
-        </b-button>
-      </b-container>
+      <p class="text-secondary">みんなに宣言したなら<b>有言実行</b>しないとね</p>
+      <Login></Login>
     </div>
     <Tweets></Tweets>
+
+    <!-- message when users login -->
     <div id="footer" class="text-center">
       Copyright 2019 Tetsunari Sumiyoshi
     </div>
@@ -26,18 +20,30 @@
 <script>
 import Navbar from 'navbar.vue'
 import Tweets from 'tweets.vue'
+import Login from 'login.vue'
+
+const axios = require('axios')
 
 export default {
   name: 'App',
-  components: { Navbar, Tweets }
+  data: function() {
+    return {
+      is_login: false
+    }
+  },
+  created:
+    function() {
+      const self = this
+      axios.get('/login_check')
+        .then(res => {
+          self.is_login = res.data.login_status
+        })
+    },
+  components: { Navbar, Tweets, Login }
 }
 </script>
 
 <style lang="scss" scoped>
-#declare {
-  margin: 1em;
-}
-
 #footer {
   bottom: 0;
   position: absolute;
