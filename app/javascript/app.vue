@@ -22,8 +22,23 @@ import Navbar from 'navbar.vue'
 import Tweets from 'tweets.vue'
 import Login from 'login.vue'
 
+const axios = require('axios')
+
 export default {
   name: 'App',
+  data: function() {
+    return {
+      is_login: false
+    }
+  },
+  created:
+    function() {
+      const self = this
+      axios.get('/login_check')
+        .then(res => {
+          self.is_login = res.data.login_status
+        })
+    },
   components: { Navbar, Tweets, Login }
 }
 </script>

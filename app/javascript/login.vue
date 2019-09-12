@@ -3,7 +3,7 @@
     <b-button
       id="login_button"
       v-b-tooltip.hover
-      href="/auth/twitter"
+      href="/users/auth/twitter"
       variant="primary"
       title="口だけなんて言わせない！"
     >
