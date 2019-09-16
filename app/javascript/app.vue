@@ -1,6 +1,5 @@
 <template>
   <b-container class="p-0 max-view-height" fluid>
-    <Navbar></Navbar>
     <div class="text-center my-3">
       <h1 class="logo">
         有言実GO<ion-icon name="megaphone"></ion-icon>
@@ -18,7 +17,6 @@
 </template>
 
 <script>
-import Navbar from 'navbar.vue'
 import Tweets from 'tweets.vue'
 import Login from 'login.vue'
 
@@ -39,7 +37,7 @@ export default {
           self.is_login = res.data.login_status
         })
     },
-  components: { Navbar, Tweets, Login }
+  components: { Tweets, Login }
 }
 </script>
 
