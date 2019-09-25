@@ -6,6 +6,7 @@ import Axios from 'axios'
 // common modules
 import App from '../app.vue'
 import Navbar from '../navbar.vue'
+import Userpage from '../userpage.vue'
 
 // bootstrap css files
 import 'bootstrap/dist/css/bootstrap.css'
@@ -15,5 +16,5 @@ Vue.use(BootstrapVue)
 
 export default new Vue({
   el: '#app',
-  components: { App, Navbar }
+  components: { App, Navbar, Userpage }
 })
