@@ -1,14 +1,13 @@
 <template>
   <b-container class="p-0 max-view-height" fluid>
-      <div class="text-center my-3">
-        <h1 class="logo">
-          有言実GO<ion-icon name="megaphone"></ion-icon>
-        </h1>
-        <p class="text-secondary">みんなに宣言したなら<b>有言実行</b>しないとね</p>
-        <Login></Login>
-      </div>
-      <Tweets></Tweets>
+    <div class="text-center my-3">
+      <h1 class="logo">
+        有言実GO<ion-icon name="megaphone"></ion-icon>
+      </h1>
+      <p class="text-secondary">みんなに宣言したなら<b>有言実行</b>しないとね</p>
+      <Login></Login>
     </div>
+    <Tweets></Tweets>
   </b-container>
 </template>
 

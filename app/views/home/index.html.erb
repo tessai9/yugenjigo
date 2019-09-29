@@ -3,7 +3,7 @@
   <Navbar></Navbar>
 
   <% if user_signed_in? %>
-    <Userpage></Userpage>
+    <Userpage v-bind:auth_token="auth_token"></Userpage>
   <% else %>
     <app></app>
   <% end %>

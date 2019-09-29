@@ -1,6 +1,6 @@
 <template>
   <b-container id="other_declaration" class="p-0" fluid>
-    <h4>みんなが今日絶対やること</h4>
+    <h4>みんなの宣言</h4>
     <b-card-group v-if="!error_flg" class="tweet_group" deck>
       <b-card
         v-for="tweet in get_data"
@@ -50,7 +50,7 @@ export default {
   },
   created:
     function() {
-      setTimeout(this.getTweets, 1000)
+      setTimeout(this.getTweets, 500)
     }
 }
 </script>

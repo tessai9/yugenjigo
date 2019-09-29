@@ -3,11 +3,9 @@
 one:
   uid: MyString
   declare: MyText
-  done: 
-  user: one
+  done: false
 
 two:
   uid: MyString
   declare: MyText
-  done: 
-  user: two
+  done: false
