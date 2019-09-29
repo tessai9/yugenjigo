@@ -4,8 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :timeoutable, :validatable, :omniauthable
 
+  has_many :declares
+
+  # find or create user
   def self.from_omniauth(auth)
-    current_user = User.find_or_create_by!(provider: auth[:provider], uid: auth[:uid]) do |user|
+    user_data = User.find_or_create_by!(provider: auth[:provider], uid: auth[:uid]) do |user|
       user.provider = auth[:provider]
       user.uid = auth[:uid]
       user.username = auth[:nickname]
@@ -13,11 +16,12 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0, 20]
     end
 
-    current_user
+    user_data
   end
 
   private
 
+  # make dummy email
   def self.dummy_email(auth)
     "#{auth[:uid]}@yugenjigo.com"
   end

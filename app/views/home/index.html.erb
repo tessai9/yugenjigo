@@ -1,6 +1,17 @@
 <div id="app">
+  <!-- Navigation bar -->
   <Navbar></Navbar>
-  <app></app>
+
+  <% if user_signed_in? %>
+    <Userpage v-bind:auth_token="auth_token"></Userpage>
+  <% else %>
+    <app></app>
+  <% end %>
+
+  <!-- footer -->
+  <div id="footer" class="text-center">
+    Copyright 2019 Tetsunari Sumiyoshi
+  </div>
 </div>
 
 <%= javascript_pack_tag 'home' %>

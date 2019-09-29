@@ -8,11 +8,6 @@
       <Login></Login>
     </div>
     <Tweets></Tweets>
-
-    <!-- message when users login -->
-    <div id="footer" class="text-center">
-      Copyright 2019 Tetsunari Sumiyoshi
-    </div>
   </b-container>
 </template>
 
@@ -24,36 +19,13 @@ const axios = require('axios')
 
 export default {
   name: 'App',
-  data: function() {
-    return {
-      is_login: false
-    }
-  },
-  created:
-    function() {
-      const self = this
-      axios.get('/login_check')
-        .then(res => {
-          self.is_login = res.data.login_status
-        })
-    },
   components: { Tweets, Login }
 }
 </script>
 
 <style lang="scss" scoped>
-#footer {
-  bottom: 0;
-  position: absolute;
-  width: 100vw;
-}
-
 .logo {
   font-size: 5em;
-}
-
-.max-view-height{
-  height: 100vh;
 }
 
 @media (max-width: 720px) {
