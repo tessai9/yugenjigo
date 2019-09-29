@@ -1,24 +1,16 @@
-# README
+# 有言実GO
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+URL: https://sumi-test.herokuapp.com/  
+まだ開発中のためURLは開発用のサイトに繋がります
 
-Things you may want to cover:
+有言実GOは、twitterと連携する宣言アプリです！
 
-* Ruby version
+- 今日やろうと思っていることがあるのに実行に移せない...
+- モチベーションがなくて続かない...
 
-* System dependencies
+ならば、みんなの前で「やります！」と宣言してやらざるを得ない状況になってしまおう！  
+というサービスです
 
-* Configuration
+# 開発者
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- [tessai9](https://github.com/tessai9)
