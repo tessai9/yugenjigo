@@ -1,9 +1,17 @@
 <template>
   <b-container class="p-0" fluid>
-    <b-navbar type="dark" variant="info">
+    <b-navbar type="dark" variant="info"　toggleable="sm">
       <b-navbar-brand id="service_title" href="/">
         GO<ion-icon name="megaphone"></ion-icon>
       </b-navbar-brand>
+      <b-navbar-toggle target="header_menu"></b-navbar-toggle>
+
+      <b-collapse id="header_menu" is-nav>
+        <b-navbar-nav>
+          <b-nav-item>有言実GOとは？</b-nav-item>
+          <b-nav-item>ログアウト</b-nav-item>
+        </b-navbar-nav>
+      </b-collapse>
     </b-navbar>
   </b-container>
 </template>
