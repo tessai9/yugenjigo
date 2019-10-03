@@ -8,15 +8,27 @@
 
       <b-collapse id="header_menu" is-nav>
         <b-navbar-nav>
-          <b-nav-item>有言実GOとは？</b-nav-item>
-          <b-nav-item>ログアウト</b-nav-item>
+          <b-nav-item
+            v-b-modal.what_yugenjigo
+          >
+            有言実GOとは？
+          </b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
+    <b-modal
+      id="what_yugenjigo"
+      title="有言実GOとは"
+    >
+      <p>「やらなきゃだけどめんどくさい..」となってしまうあなたに。</p>
+      <p>宣言して、応援してもらって、有言実行して褒めてもらいましょう！</p>
+    </b-modal>
   </b-container>
 </template>
 
 <script>
+const axios = require('axios')
+
 export default {
   name: 'Navbar'
 }
