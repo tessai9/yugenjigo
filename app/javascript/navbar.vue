@@ -19,9 +19,12 @@
     <b-modal
       id="what_yugenjigo"
       title="有言実GOとは"
+      size="lg"
+      hide-footer
     >
       <p>「やらなきゃだけどめんどくさい..」となってしまうあなたに。</p>
       <p>宣言して、応援してもらって、有言実行して褒めてもらいましょう！</p>
+      <b-button block @click="$bvModal.hide('what_yugenjigo')">閉じる</b-button>
     </b-modal>
   </b-container>
 </template>
