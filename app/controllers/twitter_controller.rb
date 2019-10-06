@@ -1,5 +1,5 @@
 class TwitterController < ApplicationController
-  before_action :authenticate_user!, only: [:show]
+  before_action :authenticate_user!
 
   # twitter client variable
   @@client = Twitter::REST::Client.new do |config|

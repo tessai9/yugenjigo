@@ -1,5 +1,5 @@
 class DeclaresController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:reactions]
 
   # today's declaration
   def index
@@ -9,11 +9,25 @@ class DeclaresController < ApplicationController
     # make json as response
     if @last_declare
       # exist
-      render :json => JSON.generate({ :exist => true, :declaration_id => @last_declare.id, :todays_declare => @last_declare.declare, :done => @last_declare.done })
+      render :json => JSON.generate({ :exist => true, :user_id => @last_declare.uid ,:declaration_id => @last_declare.id, :todays_declare => @last_declare.declare, :done => @last_declare.done })
     else
       # not exist
       render :json => JSON.generate({ :exist => false })
     end
+  end
+
+  def reactions
+    # seach specified declaration
+    @declare = Declare.find(params[:id])
+
+    # check whose declaration
+    @isYours = if current_user.nil?
+                 false
+               elsif
+                 @declare.uid == current_user.uid
+               end
+
+    render :json => JSON.generate({ :your_declaration => @isYours, :cheered => @declare.cheered })
   end
 
   # make declaration

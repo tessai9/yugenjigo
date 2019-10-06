@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   get '/twitter', to: 'twitter#index'
   resources :declares
   get '/refer/:id', to: 'referer#index'
+  get '/reactions/:id', to: 'declares#reactions'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
