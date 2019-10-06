@@ -12,7 +12,7 @@ export default {
   props: ['declaration_id'],
   data: function() {
     return {
-      cheer_button_clickable: false,  // cheer button clieckable or not
+      cheer_button_clickable: false,  // cheer button clickable or not
       cheered_counts: 0,        // counter for cheered numbers by other users
       click_counts_of_cheer: 0  // counter for click numbers
     }
