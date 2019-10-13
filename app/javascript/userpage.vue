@@ -23,7 +23,7 @@
               variant="primary"
               title="みんなに知らせよう！"
             >
-              <ion-icon class="icon_on_button" name="logo-twitter"></ion-icon>でもShareする
+              <ion-icon class="icon_on_button" name="logo-twitter"></ion-icon>でShare
             </b-button>
             <b-button
               v-b-tooltip.hover
@@ -86,7 +86,7 @@ import Reactions from './reactions.vue'
 
 const axios = require('axios')
 const service_url = location.origin
-const url_for_share = 'https://twitter.com/intent/tweet?hashtags=有言実GO?url=' + service_url
+const url_for_share = 'https://twitter.com/intent/tweet?hashtags=有言実GO?url=' + service_url + '/refer/'
 
 export default {
   name: 'Userpage',
@@ -118,7 +118,7 @@ export default {
             self.declaration_id = res.data.declaration_id
             self.done_flg    = res.data.done
             self.declaration = res.data.todays_declare
-            self.text_for_share = encodeURI(url_for_share + "&text=【今日やること】" + self.declaration)
+            self.text_for_share = encodeURI(url_for_share  + self.declaration_id + "&text=【今日やること】" + self.declaration)
           }
         })
     },

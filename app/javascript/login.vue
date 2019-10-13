@@ -32,9 +32,4 @@ export default {
 #declare {
   margin: 1em;
 }
-
-.icon_on_button {
-  font-size: 1.5rem;
-  vertical-align: -15%;
-}
 </style>

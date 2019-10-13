@@ -1,0 +1,27 @@
+<div id="referer">
+  <!-- Navigation bar -->
+  <Navbar></Navbar>
+
+  <!-- Refer specified declare -->
+  <Refer
+    declaration_id="<%= @declare.id %>"
+    user_name="<%= @declared_user %>"
+    content="<%= @declare.declare %>"
+    done_flg="<%= @declare.done %>"
+  >
+  </Refer>
+
+  <% unless user_signed_in? %>
+    <div class="text-center my-3">
+      <p>あなたもログインして宣言しよう！</p>
+      <Login></Login>
+    </div>
+  <% end %>
+
+  <!-- footer -->
+  <div id="footer" class="text-center">
+    Copyright 2019 Tetsunari Sumiyoshi
+  </div>
+</div>
+
+<%= javascript_pack_tag 'refer' %>

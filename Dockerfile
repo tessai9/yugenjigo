@@ -8,7 +8,7 @@ RUN apt-get -y update && \
                     libpq-dev \
                     nodejs
 RUN gem install bundle
-RUN mkdir /app
+RUN mkdir $APP_DIR
 
 WORKDIR $APP_DIR
 

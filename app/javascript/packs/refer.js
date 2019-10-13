@@ -9,10 +9,11 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 // common modules
 import Refer from '../refer.vue'
 import Navbar from '../navbar.vue'
+import Login from '../login.vue'
 
 Vue.use(BootstrapVue)
 
 export default new Vue({
   el: '#referer',
-  components: { Refer, Navbar }
+  components: { Refer, Navbar, Login }
 })

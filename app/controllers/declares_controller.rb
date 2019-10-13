@@ -47,10 +47,17 @@ class DeclaresController < ApplicationController
     render :json => JSON.generate({ :updated => @target_declaration.update(done: true) })
   end
 
+  # count up cheered
+  def countup
+    @target_declaration = Declare.find(params[:declaration_id])
+
+    render :json => JSON.generate({ :updated => @target_declaration.update(done: params[:count]) })
+  end
+
   private
 
   # permit parameter
   def posted_declare
-    params.require(:declares).permit(:declare, :declaration_id)
+    params.require(:declares).permit(:declare, :declaration_id, :count)
   end
 end
