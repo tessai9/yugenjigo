@@ -1,5 +1,5 @@
 class DeclaresController < ApplicationController
-  before_action :authenticate_user!, except: [:reactions]
+  before_action :authenticate_user!, except: [:reactions, :countup]
 
   # today's declaration
   def index

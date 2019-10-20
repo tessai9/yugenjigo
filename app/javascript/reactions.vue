@@ -1,15 +1,21 @@
 <template>
   <div class="text-center" style="font-size: 1.5em;">
-    <a
-      v-model="cheer_button_clickable"
-      v-if="cheer_button_clickable"
+    <ion-icon
+      v-model="yours"
+      v-if="!yours"
       v-on:click="addCounter"
-    >
-      <ion-icon name="thumbs-up" class="icon_on_button"></ion-icon>
-    </a>
+      name="thumbs-up"
+      class="icon_on_button"
+      style="cursor: pointer;"
+    ></ion-icon>
     <ion-icon v-else name="thumbs-up" class="icon_on_button"></ion-icon>
-
-    &nbsp&nbsp<span style="font-weight: bold;">{{ cheered_counts }}</span>
+    &nbsp&nbsp
+    <span
+      v-model="cheered_counts"
+      style="font-weight: bold;"
+    >
+      {{ cheered_counts }}
+    </span>
   </div>
 </template>
 
@@ -21,7 +27,7 @@ export default {
   props: ['declaration_id'],
   data: function() {
     return {
-      cheer_button_clickable: false,  // cheer button clickable or not
+      yours: false,  // cheer button clickable or not
       cheered_counts: 0,          // counter for cheered numbers by other users
       click_counts_of_cheer: 0,   // counter for click numbers
       tmp_counter: 0              // temporary counter
@@ -29,7 +35,7 @@ export default {
   },
   mounted: function() {
     this.setButtonStatus()
-    setInterval(this.check_for_counter, 1000)
+    setInterval(this.check_for_counter, 10)
   },
   methods: {
     setButtonStatus: function() {
@@ -38,7 +44,7 @@ export default {
       // check whose declaration
       axios.get('/reactions/' + self.declaration_id)
         .then(function(res) {
-          self.cheer_button_clickable = res.data.your_declaration
+          self.yours = res.data.your_declaration
           self.cheered_counts = res.data.cheered
         })
     },
@@ -47,7 +53,7 @@ export default {
       if (this.click_counts_of_cheer < 11) {
         this.click_counts_of_cheer++
       }else{
-        this.cheer_button_clickable = false
+        this.yours = false
       }
     },
     check_for_counter: function() {

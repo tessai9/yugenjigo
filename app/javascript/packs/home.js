@@ -7,6 +7,7 @@ import Axios from 'axios'
 import App from '../app.vue'
 import Navbar from '../navbar.vue'
 import Userpage from '../userpage.vue'
+import Tweets from '../tweets.vue'
 
 // bootstrap css files
 import 'bootstrap/dist/css/bootstrap.css'
@@ -31,5 +32,5 @@ export default new Vue({
       auth_token: authenticity_token
     }
   },
-  components: { App, Navbar, Userpage }
+  components: { App, Navbar, Userpage, Tweets }
 })

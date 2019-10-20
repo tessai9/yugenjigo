@@ -22,3 +22,14 @@ export default {
   components: { Reactions }
 }
 </script>
+
+<style lang="scss">
+.done_check{
+  font-size: 4em;
+  color: greenyellow;
+  border: thin;
+  display: inline-flex;
+  border-radius: 50%;
+  background-color: white;
+}
+</style>
