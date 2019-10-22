@@ -12,24 +12,40 @@
           bg-variant="light"
           text-variant="dark"
         >
-          <b-button
+          <p
             v-model="done_flg"
             v-if="!done_flg"
-            v-b-tooltip.hover
-            v-on:click="notifyDone"
-            variant="success"
-            title="有言実行できたらクリック！"
           >
-            実行完了！
-          </b-button>
+            <b-button
+              v-b-tooltip.hover
+              :href="text_for_share"
+              target="_blank"
+              variant="primary"
+              title="みんなに知らせよう！"
+            >
+              <ion-icon class="icon_on_button" name="logo-twitter"></ion-icon>でShare
+            </b-button>
+            <b-button
+              v-b-tooltip.hover
+              v-on:click="notifyDone"
+              variant="success"
+              title="有言実行できたらクリック！"
+            >
+              実行完了！
+            </b-button>
+          </p>
+
           <b-button
             v-else
             variant="primary"
-            :href="'https://twitter.com/intent/tweet?url=https%3A%2F%2Fsumi-test.herokuapp.com%2F&hashtags=%E6%9C%89%E8%A8%80%E5%AE%9FGO&text=' + declaration"
+            :href="text_for_share"
             target="_blank"
           >
-            twitterで報告しよう！
+            <ion-icon class="icon_on_button" name="logo-twitter"></ion-icon>でも報告する
           </b-button>
+
+          <!-- 他ユーザーのリアクション -->
+          <reactions v-bind:declaration_id='declaration_id'></reactions>
         </b-jumbotron>
       </div>
 
@@ -42,7 +58,7 @@
             v-b-modal.start_declare
             variant="info"
           >
-            宣言しよう！
+            今日は何する？
           </b-button>
         </b-jumbotron>
 
@@ -54,34 +70,43 @@
           <b-form>
             <b-form-textarea
               v-model="input_declare"
-              placeholder="今日は何する？"
+              placeholder="例）部屋とお風呂とトイレを綺麗にする"
               rows="1"
             >
             </b-form-textarea>
           </b-form>
         </b-modal>
       </div>
-      <!-- 有言実行率 -->
     </div>
   </b-container>
 </template>
 
 <script>
+import Reactions from './reactions.vue'
+
 const axios = require('axios')
+const service_url = location.origin
+const url_for_share = 'https://twitter.com/intent/tweet?hashtags=有言実GO?url=' + service_url + '/refer/'
 
 export default {
   name: 'Userpage',
   props: ['auth_token'],
+  components: { Reactions },
   data: function() {
     return {
       exist_flg: false,   // if today's declaration exists
       done_flg: false,    // already done or not
       declaration: "",    // today's declaration
       declaration_id: "", // declaration's ID
+      whose_declaration: "",  // user id who is declared
       input_declare: "",  // text what user will declare
-      auth_token_for_request: this.auth_token,   // authenticity token from parent
+      text_for_share: "", // text for twitter sharing
     }
   },
+  created:
+    function() {
+      setTimeout(this.getTodaysDeclaration, 100)
+    },
   methods: {
     // get today's declaration
     getTodaysDeclaration: function() {
@@ -92,6 +117,7 @@ export default {
             self.declaration_id = res.data.declaration_id
             self.done_flg    = res.data.done
             self.declaration = res.data.todays_declare
+            self.text_for_share = encodeURI(url_for_share + self.declaration_id + "&text=【今日やること】" + self.declaration)
           }
         })
     },
@@ -101,7 +127,7 @@ export default {
 
       // resiter new declaration
       axios.post('/declares',{
-        authenticity_token: self.auth_token_for_request,
+        authenticity_token: self.auth_token,
         content: self.input_declare
       })
         .then(function(res) {
@@ -113,30 +139,24 @@ export default {
           }
         })
     },
-    // make declaration status dane
+    // make declaration status done
     notifyDone: function() {
       const self = this
 
       // update declaration status
       axios.patch('/declares/' + self.declaration_id, {
-        authenticity_token: self.auth_token_for_request,
+        authenticity_token: self.auth_token,
         declaration_id: self.declaration_id
       })
         .then(function(res) {
           if(self.done_flg = res.data.updated) {
             window.alert("有言実GO！その調子！")
+            self.text_for_share = encodeURI(url_for_share + self.declaration_id + "&text=【完了！】" + self.declaration)
           }else{
             window.alert("更新に失敗しました・・・")
           }
         })
     }
-  },
-  created:
-    function() {
-      setTimeout(this.getTodaysDeclaration, 100)
-    }
+  }
 }
 </script>
-
-<style lang="scss">
-</style>

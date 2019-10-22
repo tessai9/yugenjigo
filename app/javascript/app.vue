@@ -7,23 +7,21 @@
       <p class="text-secondary">みんなに宣言したなら<b>有言実行</b>しないとね</p>
       <Login></Login>
     </div>
-    <Tweets></Tweets>
   </b-container>
 </template>
 
 <script>
-import Tweets from 'tweets.vue'
 import Login from 'login.vue'
 
 const axios = require('axios')
 
 export default {
   name: 'App',
-  components: { Tweets, Login }
+  components: { Login }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .logo {
   font-size: 5em;
 }
