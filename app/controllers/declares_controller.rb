@@ -21,10 +21,10 @@ class DeclaresController < ApplicationController
     @declare = Declare.find(params[:id])
 
     # check whose declaration
-    @isYours = if current_user.nil?
-                 false
-               elsif
+    @isYours = unless current_user.nil?
                  @declare.uid == current_user.uid
+               else
+                 false
                end
 
     render :json => JSON.generate({ :your_declaration => @isYours, :cheered => @declare.cheered })
@@ -42,16 +42,16 @@ class DeclaresController < ApplicationController
 
   # update completed declaration
   def update
-    @target_declaration = Declare.find(params[:declaration_id])
-
-    render :json => JSON.generate({ :updated => @target_declaration.update(done: true) })
+    # @target_declaration = Declare.find(params[:declaration_id])
+    render :json => JSON.generate({ :updated => Declare.find(params[:declaration_id]).update(done: true) })
   end
 
   # count up cheered
   def countup
-    @target_declaration = Declare.find(params[:declaration_id])
+    @target_declaration = Declare.find(params[:declaration_id]).lock!
+    @result = @target_declaration.update("cheered" => @target_declaration.cheered += params[:count])
 
-    render :json => JSON.generate({ :updated => @target_declaration.update(done: params[:count]) })
+    render :json => JSON.generate({ :updated => @result, :calculated => @target_declaration.cheered })
   end
 
   private

@@ -6,7 +6,11 @@
       bg-variant="light"
       text-variant="dark"
     >
-      <Reactions v-bind:declaration_id='declaration_id'></Reactions>
+      <Reactions
+        v-bind:declaration_id='declaration_id'
+        v-bind:auth_token_for_request='auth_token'
+      >
+      </Reactions>
     </b-jumbotron>
   </div>
 </template>
@@ -18,7 +22,7 @@ const axios = require('axios')
 
 export default {
   name: 'Refer',
-  props: ['declaration_id', 'user_name', 'content', 'done_flg'],
+  props: ['declaration_id', 'user_name', 'content', 'done_flg', 'auth_token'],
   components: { Reactions }
 }
 </script>
