@@ -86,7 +86,7 @@ import Reactions from './reactions.vue'
 
 const axios = require('axios')
 const service_url = location.origin
-const url_for_share = 'https://twitter.com/intent/tweet?hashtags=有言実GO?url=' + service_url + '/refer/'
+const url_for_share = 'https://twitter.com/intent/tweet?hashtags=有言実GO&url=' + service_url + '/refer/'
 
 export default {
   name: 'Userpage',
