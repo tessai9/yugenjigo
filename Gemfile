@@ -19,7 +19,16 @@ gem 'webpacker'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
+# Use OAuth and devise
+# gem 'omniauth', '~> 1.9'
+gem 'omniauth-twitter', '~> 1.4'
+
+# Use devise to store user's login info
+gem 'devise', '~> 4.7'
+
+# Use twitter api
 gem 'twitter'
+
 
 gem 'json'
 
