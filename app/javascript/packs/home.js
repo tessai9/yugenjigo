@@ -2,6 +2,7 @@
 import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue'
 import Axios from 'axios'
+import Lodash from 'lodash'
 
 // common modules
 import App from '../app.vue'
@@ -15,21 +16,14 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(BootstrapVue)
 
-// find csrf token
-const tags = document.getElementsByTagName("meta");
-let authenticity_token = ""
-for (let i = 0; i < tags.length; i++) {
-  if (tags[i].name === "csrf-token") {
-    authenticity_token = tags[i].content;
-    break;
-  }
-}
+// import csrf token
+import csrf_auth_token from './csrf_token'
 
 export default new Vue({
   el: '#app',
   data: function() {
     return {
-      auth_token: authenticity_token
+      auth_token: csrf_auth_token.csrf_auth_token
     }
   },
   components: { App, Navbar, Userpage, Tweets }

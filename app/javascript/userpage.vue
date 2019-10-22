@@ -101,7 +101,6 @@ export default {
       whose_declaration: "",  // user id who is declared
       input_declare: "",  // text what user will declare
       text_for_share: "", // text for twitter sharing
-      auth_token_for_request: this.auth_token,   // authenticity token from parent
     }
   },
   created:
@@ -118,7 +117,7 @@ export default {
             self.declaration_id = res.data.declaration_id
             self.done_flg    = res.data.done
             self.declaration = res.data.todays_declare
-            self.text_for_share = encodeURI(url_for_share  + self.declaration_id + "&text=【今日やること】" + self.declaration)
+            self.text_for_share = encodeURI(url_for_share + self.declaration_id + "&text=【今日やること】" + self.declaration)
           }
         })
     },
@@ -128,7 +127,7 @@ export default {
 
       // resiter new declaration
       axios.post('/declares',{
-        authenticity_token: self.auth_token_for_request,
+        authenticity_token: self.auth_token,
         content: self.input_declare
       })
         .then(function(res) {
@@ -146,13 +145,13 @@ export default {
 
       // update declaration status
       axios.patch('/declares/' + self.declaration_id, {
-        authenticity_token: self.auth_token_for_request,
+        authenticity_token: self.auth_token,
         declaration_id: self.declaration_id
       })
         .then(function(res) {
           if(self.done_flg = res.data.updated) {
             window.alert("有言実GO！その調子！")
-            self.text_for_share = encodeURI(url_for_share + "&text=【完了！】" + self.declaration)
+            self.text_for_share = encodeURI(url_for_share + self.declaration_id + "&text=【完了！】" + self.declaration)
           }else{
             window.alert("更新に失敗しました・・・")
           }
