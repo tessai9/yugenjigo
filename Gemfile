@@ -24,7 +24,7 @@ gem 'webpacker'
 gem 'omniauth-twitter', '~> 1.4'
 
 # Use devise to store user's login info
-gem 'devise', '~> 4.7'
+gem "devise", ">= 4.7.1"
 
 # Use twitter api
 gem 'twitter'

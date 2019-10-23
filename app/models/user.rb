@@ -23,6 +23,6 @@ class User < ApplicationRecord
 
   # make dummy email
   def self.dummy_email(auth)
-    "#{auth[:uid]}@yugenjigo.com"
+    "#{auth[:uid]}@yugenjigo.work"
   end
 end
