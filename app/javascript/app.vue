@@ -32,4 +32,10 @@ export default {
   }
 }
 
+@media (max-width: 400px) {
+  .logo {
+    font-size: 3em;
+  }
+}
+
 </style>

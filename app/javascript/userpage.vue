@@ -160,3 +160,16 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@media (max-width: 7200px) {
+  .display-3 {
+    font-size: 4rem;
+  }
+}
+@media (max-width: 400px) {
+  .display-3 {
+    font-size: 3rem;
+  }
+}
+</style>
