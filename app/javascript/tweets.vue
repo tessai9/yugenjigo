@@ -72,4 +72,11 @@ export default {
   }
 }
 
+@media (max-width: 720px) {
+  .tweet_group {
+    text-align: center;
+    display: block;
+  }
+}
+
 </style>

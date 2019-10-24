@@ -1,6 +1,6 @@
 # 有言実GO
 
-サイトURL: https://yugenjigo.herokuapp.com/  
+サイトURL: https://www.yugenjigo.work/  
 
 今日することを宣言してみんなに応援してもらおう！  
 

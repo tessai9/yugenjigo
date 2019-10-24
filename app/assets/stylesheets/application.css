@@ -19,11 +19,16 @@
 
 #footer {
   bottom: 0;
-  position: absolute;
   width: 100vw;
 }
 
 .icon_on_button {
   font-size: 1.5rem;
   vertical-align: -15%;
+}
+
+@media (min-height: 480px) {
+  #footer {
+    position: absolute;
+  }
 }
