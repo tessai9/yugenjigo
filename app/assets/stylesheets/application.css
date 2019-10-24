@@ -27,7 +27,7 @@
   vertical-align: -15%;
 }
 
-@media (min-width: 720px) {
+@media (min-height: 480px) {
   #footer {
     position: absolute;
   }
