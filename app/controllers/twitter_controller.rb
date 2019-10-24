@@ -1,6 +1,4 @@
 class TwitterController < ApplicationController
-  before_action :authenticate_user!
-
   # twitter client variable
   @@client = Twitter::REST::Client.new do |config|
     config.consumer_key        = Rails.application.credentials.twitter_consumer_key
