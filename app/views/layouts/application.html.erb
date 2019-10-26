@@ -11,7 +11,11 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body style="max-height: 100vh;">
+  <body>
     <%= yield %>
+    <!-- footer -->
+    <footer id="footer" class="text-center">
+      Copyright 2019 Tetsunari Sumiyoshi
+    </footer>
   </body>
 </html>
