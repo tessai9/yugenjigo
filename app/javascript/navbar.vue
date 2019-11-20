@@ -13,6 +13,12 @@
           >
             有言実GOとは？
           </b-nav-item>
+          <b-nav-item
+            href="https://tessai9.github.io/"
+            target="blank"
+          >
+            運営・開発者情報
+          </b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -30,10 +36,17 @@
 </template>
 
 <script>
+import myselfImg from './assets/52a6dde5_prof.png'
+
 const axios = require('axios')
 
 export default {
-  name: 'Navbar'
+  name: 'Navbar',
+  data: function(){
+    return{
+      myself_image: myselfImg
+    }
+  }
 }
 </script>
 
