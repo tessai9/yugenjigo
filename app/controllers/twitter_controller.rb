@@ -1,3 +1,4 @@
+# coding: utf-8
 class TwitterController < ApplicationController
   # twitter client variable
   @@client = Twitter::REST::Client.new do |config|
@@ -9,6 +10,7 @@ class TwitterController < ApplicationController
 
   # search tweets
   def index
+    logger.debug @@client.search("#有言実GO -RT", lang: "ja", count: 8).to_h
     render :json => JSON.generate(@@client.search("#有言実GO -RT", lang: "ja", count: 8).to_h)
   end
 end
